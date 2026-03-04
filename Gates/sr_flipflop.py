@@ -7,10 +7,10 @@ class SRFlipFlop(Gate):
         super().__init__(input1, input2)
         self.state = 0  # El Flip-Flop tiene memoria, inicia en 0 (Q = 0)
 
-    def evaluate(self):
+    def compute(self, val1, val2):
         # Obtenemos los valores de Set (S) y Reset (R)
-        s = self._get_val(self.input1)
-        r = self._get_val(self.input2)
+        s = val1
+        r = val2
         
         # Lógica del Flip-Flop SR:
         if s == 1 and r == 0:
