@@ -32,16 +32,10 @@ class CircuitBuilder:
             
         self.circuit.root = current_nodes[0]
         self.circuit.ff_node = None
-        self.circuit.ff_target = None # Guardará (Nivel, Indice) o "Salida Final"
+        self.circuit.ff_target = None # Guardará (Nivel, Indice)
         
         # 2. INYECTAR EL FLIP-FLOP DINÁMICAMENTE EN CUALQUIER COMPUERTA
-        if ff_location == "Salida Final":
-            ff = GateFactory.create("SR", self.circuit.root, 0)
-            self.circuit.root = ff
-            self.circuit.ff_node = ff
-            self.circuit.ff_target = "Salida Final"
-            
-        elif ff_location.startswith("Nivel"):
+        if ff_location.startswith("Nivel"):
             # Formato: "Nivel 3 - Comp 0"
             parts = ff_location.split()
             lvl = int(parts[1])

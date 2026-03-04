@@ -119,7 +119,7 @@ class ControlsPanel(ctk.CTkScrollableFrame):
             cb.pack(side=ctk.RIGHT)
             self.gate_vars[i] = var
             
-        ff_options =["Ninguno", "Salida Final"]
+        ff_options =["Ninguno"]
         for lvl in range(num_niveles, 0, -1):
             for i in range(2 ** (lvl - 1)):
                 ff_options.append(f"Nivel {lvl} - Comp {i}")

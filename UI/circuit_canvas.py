@@ -313,20 +313,11 @@ class CircuitCanvas(tk.Canvas):
                         self.create_line(x_mid, origin[1], x_mid, target_y, fill=w_col, width=lw, tags=circuit_tag)
                         self.create_line(x_mid, target_y, in_x, target_y, fill=w_col, width=lw, tags=circuit_tag)
 
-        # 3. SALIDA FINAL Y LED
-        # (Aquí va tu bloque original de "Salida Final" con SR-FF y LED DIODO)
-        # Resumido para no alargar:
-        if circuit.ff_target == "Salida Final":
-            # ... tu lógica original para FF en salida ...
-            root_out = node_positions[id(circuit.levels[1][0])]
-            lx, ly = root_out[0] + 110, root_out[1] # Aproximado
-            out_val = circuit.ff_node.state
-        else:
-            final_out = node_positions[id(circuit.levels[1][0])]
-            lx, ly = final_out[0], final_out[1]
-            out_val = final_out[2]
-
-        # LED DIODO (Tu arte original)
+        # 3. SALIDA FINAL - LED DIODO
+        final_out = node_positions[id(circuit.levels[1][0])]
+        lx, ly = final_out[0], final_out[1]
+        out_val = final_out[2]
+        
         col_led = self.color_1 if out_val == 1 else self.color_0
         self.create_line(lx, ly, lx + 20, ly, fill=col_led, width=3 if out_val==1 else 1.5, tags=circuit_tag)
         self.create_polygon(lx+20, ly-10, lx+20, ly+10, lx+35, ly, fill=self.gate_bg, outline=col_led, width=2, tags=circuit_tag)
